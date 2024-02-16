@@ -1,9 +1,5 @@
 package circus;
 
-import circus.animal.Animal;
-import circus.animal.Duck;
-import circus.animal.Parrot;
-import circus.animal.Tiger;
 import circus.animal.*;
 import circus.stuff.Cage;
 import circus.stuff.Cannon;
@@ -51,36 +47,38 @@ public class Circus {
         }
     }
 
+    private static void printCircusSize(ArrayList<Animal> animalArrayList) {
+        for (Animal a : animalArrayList) {
+            System.out.println(a);
+        }
+    }
+
     public static void main(String[] args) {
 
         System.out.println("Number of animals: " + animals.length);
         ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
-        System.out.println("Number of animals: " + animalArrayList.size());
-        animalArrayList.add(new Tiger("Sherkhan"));
-        System.out.println("Number of animals: " + animalArrayList.size());
 
-        animalArrayList.add(new Parrot());
+        printCircusSize(animalArrayList);
 
-        Duck louie = new Duck();
-        animalArrayList.add(louie);
-        Elephant strongOne = new Elephant("StrongOne");
+        animalArrayList.add(new Duck("Louie"));
+        Elephant strongOne = new Elephant("StrongOne");;
+        Parrot andy = new Parrot("Andy");
+
         animalArrayList.add(strongOne);
+        animalArrayList.add(andy);
 
+        System.out.println("Before sorting...");
         printAllAnimals(animalArrayList);
 
-        Cage<Duck> duckCage = new Cage<>();
-        Duck duck = new Duck();
-        duckCage.lockUp(duck);
-        Parrot parrot = new Parrot();
-        Cage<Parrot> parrotCage = new Cage<>();
-        parrotCage.lockUp(parrot);
+        System.out.println("After sorting...");
+        animalArrayList.sort(Animal.AnimalNameComparator);
+        printAllAnimals(animalArrayList);
+        printCircusSize(animalArrayList);
 
-        ArrayList<Cage> cages = new ArrayList<>();
-        cages.add(duckCage);
-        cages.add(parrotCage);
 
-        for(Cage c: cages) {
-            c.release();
-        }
+        System.out.println("Strong one is at position: " + animalArrayList.indexOf(strongOne));
+
+        System.out.println("Total value of animals: " + calculateAssetValue(animals));
+        System.out.println("Total value of equipments: " + calculateAssetValue(equipments));
     }
 }
