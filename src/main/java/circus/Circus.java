@@ -67,13 +67,15 @@ public class Circus {
         animalArrayList.add(strongOne);
         animalArrayList.add(andy);
 
-        System.out.println("Before sorting...");
-        printAllAnimals(animalArrayList);
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("Dewey");
+        duckCage.lockUp(duck);
 
-        System.out.println("After sorting...");
-        animalArrayList.sort(Animal.AnimalNameComparator);
-        printAllAnimals(animalArrayList);
-        printCircusSize(animalArrayList);
+        Cage<Parrot> parrotCage = new Cage<>();
+        Parrot parrot = new Parrot("Perry");
+        parrotCage.lockUp(parrot);
+
+
 
 
         System.out.println("Strong one is at position: " + animalArrayList.indexOf(strongOne));
