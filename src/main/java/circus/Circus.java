@@ -58,6 +58,7 @@ public class Circus {
         System.out.println("Number of animals: " + animals.length);
         ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
 
+
         printCircusSize(animalArrayList);
 
         animalArrayList.add(new Duck("Louie"));
@@ -70,7 +71,6 @@ public class Circus {
         Cage<Duck> duckCage = new Cage<>();
         Duck duck = new Duck("Dewey");
         duckCage.lockUp(duck);
-
         Cage<Parrot> parrotCage = new Cage<>();
         Parrot parrot = new Parrot("Perry");
         parrotCage.lockUp(parrot);
